@@ -1,0 +1,191 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Background Image with Opacity */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/static/images/sm.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.6; /* Adjust this value (0.0 - 1.0) for transparency */
+    z-index: -1; /* Keeps the background behind content */
+}
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Section */
+.input-section {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 12px;
+    width: 60%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Apply box-shadow when the input is focused */
+input:focus {
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue glow effect */
+    border-color: #007bff; /* Highlight border */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 12px 20px;
+    background: #54d0e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background: #357ab8;
+}
+
+/* Output Section */
+.output-section {
+    text-align: left;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Proper Formatting for Generated Answer */
+#studyContent {
+    font-size: 1.1em;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Styling Key Sections */
+#studyContent h2 {
+    color: #4a90e2;
+    font-size: 1.5em;
+    margin-top: 15px;
+}
+
+#studyContent ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#studyContent ul li {
+    margin-bottom: 5px;
+}
+
+/* LaTeX Styling */
+.katex {
+    font-size: 1.2em !important;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #54d0e8;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.sidebar .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.sidebar ul {
+    list-style: none;
+    padding: 20px 0;
+    text-align: left;
+}
+.sidebar ul li {
+    padding: 15px 20px;
+    transition: background 0.3s;
+}
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    transition: color 0.3s;
+    font-size: larger;
+}
+.sidebar ul li:hover {
+    background: #34495e;
+}
+.sidebar ul li a:hover {
+    color: #f4a261;
+}
+
+/* Style for Download PDF Button */
+
+.download-btn {
+
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    background: #54d0e8; /* Green color */
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+    margin-top: 15px;
+
+}
+
+
+
+.download-btn:hover {
+
+    background: #218838; /* Darker Green */
+
+    transform: scale(1.05);
+
+}
