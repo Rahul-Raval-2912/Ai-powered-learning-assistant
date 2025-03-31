@@ -23,17 +23,23 @@ body::before {
     z-index: -1; /* Keeps the background behind content */
 }
 .quiz-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
+    max-width: none;
+    margin: 0;
+    margin-left: 250px; /* Exactly match sidebar width */
+    padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     font-family: 'Arial', sans-serif;
     text-align: center;
-    width: 100%;
-    max-height: 80vh; /* Set the height to 80% of the viewport */
-    overflow-y: auto; /* Enable vertical scrolling */
+    width: calc(100% - 250px); /* Full width minus sidebar */
+    max-height: 85vh;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
 }
 
 /* Heading */
@@ -144,6 +150,8 @@ button:hover {
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 1050; /* Increased z-index to ensure it's always on top */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for visual separation */
 }
 .sidebar .logo {
     text-align: center;
@@ -178,5 +186,72 @@ button:hover {
 @media (max-height: 700px) {
     .quiz-container {
         max-height: 90vh;
+    }
+}
+
+/* Add styles for the chart container */
+#chartContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+#chartContainer h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#resultChart {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+#resultChart:hover {
+    transform: scale(1.02);
+}
+
+/* Add responsive design */
+@media (max-width: 1024px) {
+    .quiz-container {
+        width: calc(100% - 250px);
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start; /* Top align on mobile */
+    }
+
+    .quiz-container {
+        margin-left: 0;
+        margin-top: 60px;
+        width: 100%;
+        max-height: none;
+        position: relative;
+        padding: 15px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        padding-top: 10px;
+        z-index: 1050; /* Increased z-index for mobile too */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for visual separation */
+    }
+    
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .sidebar ul li {
+        padding: 5px 10px;
+        margin: 2px;
     }
 }

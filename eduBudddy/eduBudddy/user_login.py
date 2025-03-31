@@ -35,12 +35,14 @@ def DO_LOGIN(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dashboard')  # Redirect to dashboard page
+            # Check if 'next' parameter exists in GET to handle redirects from password reset
+            next_url = request.GET.get('next', 'dashboard')
+            return redirect(next_url)  # Redirect to dashboard or next URL
         else:
             messages.error(request, 'Invalid Email or Password!')
-            return redirect('register')
+            return redirect('login')
 
-    return render(request, 'registration/register.html')
+    return render(request, 'registration/login.html')
 
 
 

@@ -46,7 +46,7 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background: #54d0e8;
+            background: linear-gradient(135deg, #266aa4 0%, #52eff7 100%);
             color: white;
             padding-top: 20px;
             position: fixed;
@@ -79,10 +79,11 @@
             text-align:left;
         }
         .sidebar ul li:hover {
-            background: #34495e;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
         }
         .sidebar ul li a:hover {
-            color: #f4a261;
+            color: #fff;
         }
 </style>
 </head>
@@ -195,7 +196,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" style="background-color: #54d0e8;">Update Profile</button>
+      <button type="submit" class="btn btn-primary" style="background: linear-gradient(90deg, #266aa4, #52eff7); border: none;">Update Profile</button>
     </form>
   </div>
 </div>

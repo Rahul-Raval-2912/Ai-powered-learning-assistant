@@ -147,6 +147,62 @@ function handleSubmitQuiz(quizData) {
     const resultBox = document.getElementById("quizResult");
     resultBox.innerHTML = `🎉 Your Score: ${score} / ${quizData.length}`;
     resultBox.style.display = "block";
+    
+    // Request the pie chart from the server
+    generateResultChart(score, quizData.length);
+}
+
+// ✅ Generate and display the pie chart
+async function generateResultChart(correct, total) {
+    try {
+        // Create form data
+        const formData = new FormData();
+        formData.append('correct', correct);
+        formData.append('total', total);
+        
+        // Get CSRF token (for Django)
+        const csrfToken = getCsrfToken();
+        
+        // Send request to server
+        const response = await fetch('/quiz_chart', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrfToken
+            },
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        
+        if (data.chart_data) {
+            // Display the chart
+            const chartContainer = document.getElementById('chartContainer');
+            const chartImage = document.getElementById('resultChart');
+            
+            chartImage.src = `data:image/png;base64,${data.chart_data}`;
+            chartContainer.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error generating chart:', error);
+    }
+}
+
+// Helper function to get CSRF token
+function getCsrfToken() {
+    // Try to get from cookie
+    const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken='))
+        ?.split('=')[1];
+    
+    if (cookieValue) return cookieValue;
+    
+    // Try to get from a meta tag
+    return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 }
 
 // ✅ Trigger "Generate Quiz" on Enter Key
